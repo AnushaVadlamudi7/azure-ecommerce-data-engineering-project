@@ -1,0 +1,42 @@
+# Databricks notebook source
+spark.conf.set(
+  "fs.azure.account.key.ecommerceadls.dfs.core.windows.net",
+  "dK6Bq+R40gLWAtRzpG1SnztgK3TJHn9v9nopnUhdes3k5m+y9FJ2d1s2gBJQfaIL/FrwFtH/atih+AStRtLXWQ=="
+)
+
+# COMMAND ----------
+
+order_items = spark.read.parquet(
+    "abfss://silver@ecommerceadls.dfs.core.windows.net/ecommerce/order_items"
+)
+
+orders = spark.read.parquet(
+    "abfss://silver@ecommerceadls.dfs.core.windows.net/ecommerce/orders"
+)
+
+# COMMAND ----------
+
+fact_df = order_items.join(
+    orders,
+    on="order_id",
+    how="inner"
+)
+
+# COMMAND ----------
+
+fact_order_items = fact_df.select(
+    "order_id",
+    "order_item_id",
+    "product_id",
+    "seller_id",
+    "customer_id",
+    "order_purchase_timestamp",
+    "price",S
+    "freight_value"
+)
+
+# COMMAND ----------
+
+fact_order_items.write.mode("overwrite").parquet(
+    "abfss://gold@ecommerceadls.dfs.core.windows.net/ecommerce/fact_order_items"
+)
