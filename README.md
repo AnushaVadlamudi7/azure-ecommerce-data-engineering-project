@@ -64,8 +64,10 @@ Data is ingested from source, processed through Raw, Silver, and Gold layers, an
 
 ### ADF Pipeline
 
+Ingestion pipeline:
 ![ADF Pipeline](images/adf_ingestion_pipeline.png)
 
+Serving pipeline:
 ![ADF Pipeline](images/adf_serving_pipeline.png)
 
 ### Databricks Transformations
