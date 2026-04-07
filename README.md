@@ -59,17 +59,20 @@ Data is ingested from source, processed through Raw, Silver, and Gold layers, an
 
 ## 📊 Screenshots
 
+### Architecture
+![Architecture](images/architecture.png)
+
 ### ADF Pipeline
 
-![ADF Pipeline](images/adf_pipeline.png)
+![ADF Pipeline](images/adf_ingestion_pipeline.png)
 
 ### Databricks Transformations
 
-![Databricks](images/databricks_transform.png)
+![Databricks](images/adb_gold_notebook_execution.png)
 
 ### SQL Output
 
-![SQL Output](images/sql_output.png)
+![SQL Output](images/sql_dim_orders.png)
 
 ---
 
